@@ -3,5 +3,15 @@ services:
   - docker
 
 script: 
-  - docker build -t react-app .
-  
+  - docker build -t raziela/react-example2 .
+  - docker images razilea/react-example2
+
+before_deploy:
+  - docker login -u patrickxpin -p love2Faith
+
+deploy: 
+  provider: script
+  script: docker push raziela/react-example2
+  on: 
+    branch: master
+ 
